@@ -10,6 +10,12 @@ import {
 } from "recharts";
 
 export default function Report({ reportData }) {
+  const getQualityColor = (quality) => {
+    if (quality <= 4) return "text-red-400";
+    if (quality <= 7) return "text-yellow-400";
+    return "text-green-400";
+  };
+
   if (!reportData) {
     return (
       <div className="flex flex-col items-center justify-center min-h-screen bg-gray-900 text-gray-300">
@@ -107,7 +113,7 @@ export default function Report({ reportData }) {
                     <>
                       Cost:{" "}
                       <span className="text-green-400">{s.cost}</span> | Quality:{" "}
-                      <span className="text-yellow-400">{s.quality}</span>
+                      <span className={getQualityColor(s.quality)}>{s.quality}</span>
                     </>
                   )}
                 </li>
