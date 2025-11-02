@@ -114,7 +114,7 @@ export async function solveMS(stagesInput, edges) {
   };
 
   try {
-    const response = await fetch("http://localhost:3000/report/getMSReport", {
+    const response = await fetch("https://daa-project-tau.vercel.app/report/getMSReport", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
