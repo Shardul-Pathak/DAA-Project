@@ -36,8 +36,6 @@ export default function solveMultistageGraph(matrix, stages, nodes, edges = []) 
         (e.fromNodeId === toNode.id && e.toNodeId === fromNode.id)
     );
 
-    console.log(edge);
-
     detailedStages.push({
       stage: k + 1,
       from: fromNode.name,

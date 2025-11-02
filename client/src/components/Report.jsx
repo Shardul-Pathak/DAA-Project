@@ -111,8 +111,8 @@ export default function Report({ reportData }) {
                     </>
                   ) : (
                     <>
-                      Cost:{" "}
-                      <span className="text-green-400">{s.cost}</span> | Quality:{" "}
+                      Distance:{" "}
+                      <span className="text-green-400">{s.distance}</span> | Quality:{" "}
                       <span className={getQualityColor(s.quality)}>{s.quality}</span>
                     </>
                   )}
