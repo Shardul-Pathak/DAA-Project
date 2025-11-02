@@ -1,4 +1,4 @@
-export default function solveMultistageGraph(matrix, stages, nodes) {
+export default function solveMultistageGraph(matrix, stages, nodes, edges = []) {
   const n = matrix.length;
   const cost = Array(n).fill(Infinity);
   const nextNode = Array(n).fill(null);
@@ -25,15 +25,23 @@ export default function solveMultistageGraph(matrix, stages, nodes) {
 
   const detailedStages = [];
   for (let k = 0; k < path.length - 1; k++) {
-    const from = nodes[path[k]];
-    const to = nodes[path[k + 1]];
-    const weight = matrix[path[k]][path[k + 1]];
+    const fromIdx = path[k];
+    const toIdx = path[k + 1];
+    const fromNode = nodes[fromIdx];
+    const toNode = nodes[toIdx];
+
+    const edge = edges.find(
+      (e) =>
+        (e.fromNodeId === fromNode.id && e.toNodeId === toNode.id) ||
+        (e.fromNodeId === toNode.id && e.toNodeId === fromNode.id)
+    );
+
     detailedStages.push({
       stage: k + 1,
-      from: from.name,
-      to: to.name,
-      cost: weight,
-      quality: (1 / weight) * 100,
+      from: fromNode.name,
+      to: toNode.name,
+      distance: edge?.distance ?? 0,
+      quality: edge?.quality ?? 0,
     });
   }
 

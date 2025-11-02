@@ -6,13 +6,13 @@ const router = express.Router();
 
 router.post("/getMSReport", (req, res) => {
   try {
-    const { nodes, stages, matrix } = req.body;
+    const { nodes, stages, matrix, edges } = req.body;
 
     if (!nodes || !matrix) {
       return res.status(400).json({ error: "Invalid input" });
     }
 
-    const result = solveMultistageGraph(matrix, stages, nodes);
+    const result = solveMultistageGraph(matrix, stages, nodes, edges);
 
     const report = {
       type: "Multistage",
@@ -27,6 +27,7 @@ router.post("/getMSReport", (req, res) => {
     res.status(500).json({ error: "Failed to process request" });
   }
 });
+
 
 router.post("/getTSPReport", (req, res) => {
   try {
