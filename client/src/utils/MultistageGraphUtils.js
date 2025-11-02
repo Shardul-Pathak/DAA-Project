@@ -1,3 +1,6 @@
+import dotenv from 'dotenv'
+dotenv.config();
+
 export function uid(prefix = "id") {
   return `${prefix}_${Math.random().toString(36).slice(2, 9)}`;
 }
@@ -113,7 +116,7 @@ export async function solveMS(stagesInput, edges) {
   };
 
   try {
-    const response = await fetch("http://localhost:3000/report/getMSReport", {
+    const response = await fetch("https://daa-project-tau.vercel.app/report/getMSReport", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

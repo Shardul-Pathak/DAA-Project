@@ -59,7 +59,7 @@ export async function solveTSP(warehouses, edges) {
   const payload = { nodes, matrix: safeMatrix };
 
   try {
-    const response = await fetch("http://localhost:3000/report/getTSPReport", {
+    const response = await fetch("https://daa-project-tau.vercel.app/report/getTSPReport", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
