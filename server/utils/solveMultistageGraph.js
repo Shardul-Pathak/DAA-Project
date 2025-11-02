@@ -40,7 +40,7 @@ export default function solveMultistageGraph(matrix, stages, nodes, edges = []) 
       stage: k + 1,
       from: fromNode.name,
       to: toNode.name,
-      distance: weight,
+      distance: edge?.distance ?? 0,
       quality: edge?.quality ?? 0,
     });
   }
